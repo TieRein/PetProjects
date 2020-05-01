@@ -1,0 +1,4 @@
+Comic Number: 2300
+Title: Everyone's an Epidemiologist
+Alt Text: If enough people uphill decide to try the rolling strategy, they can make the decision for you.
+https://imgs.xkcd.com/comics/everyones_an_epidemiologist.png
