@@ -1,7 +1,7 @@
 import requests
 import data_config
 
-xkcd_r = requests.get(url = daily_joke.xkcd_url)
+xkcd_r = requests.get(url = data_config.xkcd_url)
 data = xkcd_r.json()
 output = "Comic Number: " + str(data['num']) + "\nTitle: " + data['title'] + "\nAlt Text: " + data['alt'] + "\n" + data['img']
 print(output)

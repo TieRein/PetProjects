@@ -15,7 +15,7 @@ push = { "text": output }
 daily_headers = { "content-type": "application/json" }
 
 if last_comic != output:
-    slack_r = requests.post(url = ddata_config.aily_url, data = str(push), headers = daily_headers)
+    slack_r = requests.post(url = data_config.daily_url, data = str(push), headers = daily_headers)
     memory = open('/home/ubuntu/PetProjects/Slack_Daily_Joke/dilbert_last.txt', 'w')
     memory.write(output)
     memory.close()
