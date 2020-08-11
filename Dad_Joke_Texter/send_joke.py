@@ -41,18 +41,6 @@ audrey = client.messages.create(
     to=data_config.audrey_number
 )
 
-theron = client.messages.create(
-    body=joke,
-    from_='+14582255409',
-    to=data_config.theron_number
-)
-
-bridget = client.messages.create(
-    body=joke,
-    from_='+14582255409',
-    to=data_config.bridget_number
-)
-
 seahorse = client.messages.create(
     body=joke,
     from_='+14582255409',
@@ -71,31 +59,8 @@ cheezy = client.messages.create(
     to=data_config.cheezy_number
 )
 
-mel = client.messages.create(
-    body=joke,
-    from_='+14582255409',
-    to=data_config.mel_number
-)
-
-devon = client.messages.create(
-    body=joke,
-    from_='+14582255409',
-    to=data_config.devon_number
-)
-
-mel_friend = client.messages.create(
-    body=joke,
-    from_='+14582255409',
-    to=data_config.mel_friend_number
-)
-
 print(audrey.sid)
-print(theron.sid)
-print(bridget.sid)
 print(seahorse.sid)
 print(jacob.sid)
 print(cheezy.sid)
-print(mel.sid)
-print(devon.sid)
-print(mel_friend.sid)
 print("Done with python")

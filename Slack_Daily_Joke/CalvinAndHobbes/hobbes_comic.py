@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+import sys; sys.path.append('/home/ubuntu/.local/lib/python3.6/site-packages/twilio/rest/')
 import datetime
 import requests
 import data_config
@@ -28,4 +31,4 @@ push = { "text": output }
 daily_headers = { "content-type": "application/json" }
 
 if date == date_compare:
-    slack_r = requests.post(url = data_config.daily_url, data = str(push), headers = daily_headers)
+    slack_r = requests.post(url = data_config.daily_smile, data = str(push), headers = daily_headers)

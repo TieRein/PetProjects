@@ -1,4 +1,0 @@
-Comic Number: 2303
-Title: Error Types
-Alt Text: Type IIII error: Mistaking tally marks for Roman neumerals
-https://imgs.xkcd.com/comics/error_types.png

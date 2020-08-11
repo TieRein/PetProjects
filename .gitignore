@@ -1,8 +1,7 @@
 *~
 *data_config.py
 *pycache*
-*_last.txt
+*.txt
 *package-lock.json
-*hobbes.txt
 *node_modules
-
+*.log
