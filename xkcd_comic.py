@@ -31,7 +31,9 @@ def get_slack_webhook_url():
 def get_last_comic_metadata():
     db_entry_key = {"comic_name": "xkcd"}
     db_item = TABLE.get_item(Key=db_entry_key)
-    return db_item.get("output")
+    if not db_item.get("Item") or not db_item["Item"].get("output"):
+        return None
+    return db_item["Item"]["output"]
 
 
 def save_comic_metadata(output):
@@ -54,5 +56,6 @@ def lambda_handler(event, context):
         slack_response = requests.post(url=get_slack_webhook_url(), data=str({"text": output}), headers=daily_headers)
         # save metadata
         save_comic_metadata(output)
-        return slack_response   
+        return f"Published comic. Slack response: {slack_response.status_code}"
     return "no new comic"
+
