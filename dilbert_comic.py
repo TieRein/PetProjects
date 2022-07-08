@@ -24,7 +24,6 @@ def get_slack_webhook_url():
     secretsmanager_response = client.get_secret_value(
         SecretId=SECRET_ID
     )
-    print(secretsmanager_response)
     secret_string = json.loads(secretsmanager_response["SecretString"])
     return secret_string[SLACK_CHANNEL]
 
@@ -55,4 +54,6 @@ def lambda_handler(event, context):
         slack_response = requests.post(url=get_slack_webhook_url(), data=str({"text": output}), headers=daily_headers)
         # save metadata
         save_comic_metadata(output)
+        return slack_response
+    return "no new comic"
 
