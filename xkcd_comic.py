@@ -6,7 +6,7 @@ logger = logging.getLogger()
 
 XKCD_URL = "https://xkcd.com/info.0.json"
 SECRET_ID = "nike_slack_webhook_urls"
-SLACK_CHANNEL = "daily_smile"
+SLACK_CHANNEL = "test_space"
 TABLE_NAME = "nike_daily_smile_tracking"
 TABLE = boto3.resource('dynamodb').Table(TABLE_NAME)
 AWS_REGION = "us-west-2"
