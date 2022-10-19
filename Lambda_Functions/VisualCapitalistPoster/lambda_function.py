@@ -15,28 +15,31 @@ headers = {
 }
 
 #                  Jacob         Kylee         Connor
-#phone_numbers = [ "5417782508", "3072625482", "5415912393" ]
-phone_numbers = [ "5417782508" ]
+phone_numbers = [ "5417782508", "3072625482", "5415912393" ]
+#phone_numbers = [ "5417782508" ]
 
 def lambda_handler(event, context):
     persistent_data = get_persistent_data()
     
     url = "https://www.visualcapitalist.com/"
     first_regex=r'mvp-feat5-small-main-img left relative\">[\n\t]*<a href=\"(?P<url>[:a-zA-Z\.\/-]*)'
-    second_regex=r'<p><img src=\"(?P<image>[a-zA-Z0-9:.\-_\/]*)" alt="(?P<alt_text>[a-zA-Z0-9 .]*)'
+    second_regex=r'(?:<p>|</div>[\n]*)<img src=\"(?P<image>[a-zA-Z0-9:.\-_\/]*)\" (?:alt=\"(?P<alt_text>[a-zA-Z0-9 .]*)|usemap=)'
 
     ret = scrape_web(url, first_regex, ["url"])
+    #ret["url"]="https://www.visualcapitalist.com/sp/how-much-waste-does-a-renovation-create/"
     ret = scrape_web(ret["url"], second_regex, ["image", "alt_text"])
+    if (ret["alt_text"] == None):
+        ret["alt_text"] = "This post is sponsored"
     
     print("Image: ", ret["image"])
     print("Alt Text: ", ret["alt_text"])
     print("persistent_data: ", persistent_data)
-    print('persistent_data != ret["alt_text"]: ', (persistent_data != ret["alt_text"]))
-    if persistent_data != ret["alt_text"]:
+    print('persistent_data != (ret["alt_text"] + ret["image"]): ', (persistent_data != (ret["alt_text"] + ret["image"])))
+    if persistent_data != (ret["alt_text"] + ret["image"]):
         message = f'{ret["alt_text"]}\n\n{ret["image"]}'
         for number in phone_numbers:
             send_text(number, message)
-        set_persistent_data(ret["alt_text"])
+        set_persistent_data((ret["alt_text"] + ret["image"]))
         
     return {
         'statusCode': 200,
