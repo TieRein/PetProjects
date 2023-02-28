@@ -1,8 +1,9 @@
 *~
 *data_config.py
 *pycache*
-*.txt
 *package-lock.json
 *node_modules
 *.log
 *config.py
+venv/
+.vscode/
